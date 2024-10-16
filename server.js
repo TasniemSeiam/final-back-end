@@ -3,7 +3,8 @@ const app = require("./app.js");
 const mongoose = require("mongoose");
 
 // dotenv.config({ path: "./config/.env" });
-const DB = process.env.DB.replace("<db_password>", process.env.DB_PASS);
+// const DB = process.env.DB.replace("<db_password>", process.env.DB_PASS);
+const DB = process.env.DB ? process.env.DB.replace("<db_password>", process.env.DB_PASS) : null;
 mongoose.connect(DB).then(() => {
   console.log("connected to db...");
 });
