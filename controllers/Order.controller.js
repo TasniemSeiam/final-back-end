@@ -102,6 +102,8 @@ exports.findSpecificOrder = asyncHandler(async (req, res, next) => {
 
 // end point  PUT /api/v1/orders/:id/pay
 // allow to  /Admin-Manager
+
+
 exports.updateOrderToPaid = asyncHandler(async (req, res, next) => {
   const order = await Order.findById(req.params.id);
   if (!order) {
@@ -113,13 +115,15 @@ exports.updateOrderToPaid = asyncHandler(async (req, res, next) => {
     );
   }
 
-  order.isPaid = true;
+  order.isPaid = req.body.isPaid;
   order.paidAt = Date.now();
 
   const updatedOrder = await order.save();
 
   res.status(200).json({ status: "success", data: updatedOrder });
 });
+
+
 
 // end point  PUT /api/v1/orders/:id/deliver
 // allow to  /Admin-Manager
@@ -135,7 +139,7 @@ exports.updateOrderToDelivered = asyncHandler(async (req, res, next) => {
   }
 
   // update order to paid
-  order.isDelivered = true;
+  order.isDelivered = req.body.isDelivered;
   order.deliveredAt = Date.now();
 
   const updatedOrder = await order.save();
@@ -157,7 +161,7 @@ exports.updateOrderToCancel = asyncHandler(async (req, res, next) => {
   }
 
   // update order to canceled
-  order.isCanceled = true;
+  order.isCanceled = req.body.isCanceled;
   order.canceledAt = Date.now();
 
   const updatedOrder = await order.save();
