@@ -25,7 +25,7 @@ router.use("/:categoryId/subcategories", subCategoriesRoute);
 router
   .route("/")
   .get(getAllCategories)
-  .post(auth.protect,auth.allowedTo('admin','seller'),uploadImage, handelUpload, createCategoryValidator, createNewCategory);
+  .post(auth.protect,auth.allowedTo('admin','seller'), createCategoryValidator, createNewCategory);
 
 router
   .route("/:id")
