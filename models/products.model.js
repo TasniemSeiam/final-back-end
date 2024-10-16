@@ -135,7 +135,7 @@ productSchema.post("findOneAndDelete", async function (doc) {
   if (doc) {
     // Delete all reviews that belong to the deleted product
     await ReviewModel.deleteMany({ product: doc._id });
-    console.log(`Deleted all reviews related to product: ${doc._id}`);
+    // console.log(`Deleted all reviews related to product: ${doc._id}`);
   }
 });
 

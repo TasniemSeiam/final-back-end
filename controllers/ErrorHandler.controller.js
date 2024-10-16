@@ -31,14 +31,14 @@ const handleCastErrorDB = (err) => {
 const handleDuplicateFieldsDB= (err)=>{
     const regex = /dup key: {.*?: "(.*?)"/; 
     const val =err.errorResponse.errmsg.match(regex)[1];
-    console.log("from handleDuplicateFieldsDB",val);
+    // console.log("from handleDuplicateFieldsDB",val);
     
     const message =`Duplicated field value:${val}. Please use anther one`;
     return new AppHandleError(message,400);
 }
 const handleValidationErrorDB= (err)=>{
     const errors =Object.values(err.errors).map(el =>el.message)
-    console.log(` error from handleValidationErrorDB${errors}`);
+    // console.log(` error from handleValidationErrorDB${errors}`);
     return new AppHandleError(`invalid input data. ${errors.join(". ")}`,400);
 }
 const handleJWTError = () => new AppHandleError("Invalid token. Please login again!", 401);
@@ -46,7 +46,7 @@ const handleJWTError = () => new AppHandleError("Invalid token. Please login aga
 const errorController = (err, req, res, next) => {
     err.statusCode = err.statusCode || 500; 
     err.status = err.status || "error";
-    console.log(err);
+    // console.log(err);
 
     if (process.env.NODE_ENV === "development") {
         deverror(res, err);

@@ -32,7 +32,7 @@ categorySchema.post("findOneAndDelete", async function (doc) {
     // Delete all subcategories that belong to the deleted category
 
     await SubCategoryModel.deleteMany({ category: doc._id });
-    console.log(`Deleted all subcategories related to category: ${doc._id}`);
+    // console.log(`Deleted all subcategories related to category: ${doc._id}`);
   }
 });
 

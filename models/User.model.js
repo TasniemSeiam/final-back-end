@@ -105,19 +105,19 @@ userSchema.post("findOneAndDelete", async function (doc) {
   if (doc) {
     // Delete all products that belong to the deleted user
     await ProductModel.deleteMany({ sellerId: doc._id });
-    console.log(`Deleted all products related to user: ${doc._id}`);
+    // console.log(`Deleted all products related to user: ${doc._id}`);
 
     // Delete all reviews that belong to the deleted user
     await ReviewModel.deleteMany({ user: doc._id });
-    console.log(`Deleted all reviews related to user: ${doc._id}`);
+    // console.log(`Deleted all reviews related to user: ${doc._id}`);
 
     // Delete all orders that belong to the deleted user
     await OrderModel.deleteMany({ user: doc._id });
-    console.log(`Deleted all orders related to user: ${doc._id}`);
+    // console.log(`Deleted all orders related to user: ${doc._id}`);
     
     // Delete all cart that belong to the deleted user
     await CartModel.deleteMany({ user: doc._id });
-    console.log(`Deleted all cart related to user: ${doc._id}`);
+    // console.log(`Deleted all cart related to user: ${doc._id}`);
 
 
 
