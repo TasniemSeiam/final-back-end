@@ -24,7 +24,7 @@ const router = express.Router();
 router
   .route("/")
   .get(getAllBrands)
-  .post(auth.protect,auth.allowedTo('admin','seller'),uploadImage, handelUpload, createBrandValidator, createNewBrand);
+  .post(auth.protect,auth.allowedTo('admin','seller'), createBrandValidator, createNewBrand);
 
 router
   .route("/:id")
